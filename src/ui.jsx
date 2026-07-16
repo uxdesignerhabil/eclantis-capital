@@ -154,28 +154,45 @@ export function CtaBand({ title, subtitle, button = "Book a Free Consultation" }
 /* ---------- Footer ---------- */
 export function Footer() {
   return (
-    <footer className="bg-ink px-6 pb-8 pt-14 text-cream/80 md:px-16">
-      <div className="mx-auto grid max-w-[1200px] gap-8 md:grid-cols-[2fr_1fr_1fr_1fr]">
-        <div>
-          <div className="mb-3 flex items-center gap-2.5 text-[20px] font-extrabold text-cream">
-            <LogoMark size={26} bg="var(--color-cream)" stroke="var(--color-ink)" /> Eclantis Capital
+    <footer className="bg-ink px-6 pb-9 pt-16 text-cream/80 md:px-16">
+      <div className="mx-auto grid max-w-[1200px] gap-x-12 gap-y-10 md:grid-cols-[2.2fr_1fr_1fr_1.3fr]">
+        <div className="max-w-[320px]">
+          <div className="mb-4 flex items-center gap-2.5 text-[21px] font-extrabold text-cream">
+            <LogoMark size={28} bg="var(--color-cream)" stroke="var(--color-ink)" /> Eclantis Capital
           </div>
-          <p className="max-w-[280px] text-[14px] leading-6 text-cream/70">
-            Accounting, tax and business advisory for small businesses across the UK, with UK–UAE cross-border expertise.
+          <p className="text-[15px] leading-[1.65] text-cream/70">
+            Accounting, tax and business advisory for businesses across the UK, with UK–UAE cross-border expertise.
           </p>
+          <div className="mt-5 space-y-1 text-[13.5px] leading-6 text-cream/55">
+            <p>Eclantis Capital Ltd · Company No. 00000000</p>
+            <p>Registered office: 1 Example Street, London, EC1A 1AA</p>
+          </div>
         </div>
-        <FooterCol title="Services" links={[["Accounting", "/services#accounting"], ["Tax", "/services#tax"], ["Payroll", "/services#payroll"]]} />
+        <FooterCol title="Services" links={[["Accounting", "/services#accounting"], ["Tax", "/services#tax"], ["Advisory", "/services#advisory"], ["Payroll", "/services#payroll"]]} />
         <FooterCol title="Company" links={[["About", "/about"], ["Pricing", "/pricing"], ["Contact", "/contact"]]} />
         <div>
-          <div className="mb-3 text-[14px] font-bold text-cream">Contact</div>
-          <div className="flex flex-col gap-2 text-[14px] text-cream/70">
-            <div>hello@eclantiscapital.co.uk</div>
-            <div>+44 20 0000 0000</div>
+          <div className="mb-4 text-[15px] font-bold text-cream">Contact</div>
+          <div className="flex flex-col gap-2.5 text-[15px] text-cream/75">
+            <a href="mailto:hello@eclantiscapital.co.uk" className="transition hover:text-cream">hello@eclantiscapital.co.uk</a>
+            <a href="tel:+442000000000" className="transition hover:text-cream">+44 20 0000 0000</a>
+            <span className="text-cream/55">London, UK · Dubai, UAE</span>
           </div>
         </div>
       </div>
-      <div className="mx-auto mt-10 max-w-[1200px] border-t border-cream/15 pt-6 text-[13px] text-cream/50">
-        © {new Date().getFullYear()} Eclantis Capital Ltd. UK &amp; UAE small business accounting.
+
+      <p className="mx-auto mt-12 max-w-[1200px] border-t border-cream/15 pt-6 text-[12.5px] leading-6 text-cream/45">
+        Eclantis Capital Ltd is a firm of accountants and business advisers. Where applicable, statutory and regulated
+        work is carried out under the relevant professional body’s rules. This website is for general information and
+        does not constitute financial, tax or legal advice.
+      </p>
+
+      <div className="mx-auto mt-6 flex max-w-[1200px] flex-col items-start justify-between gap-3 text-[13px] text-cream/55 sm:flex-row sm:items-center">
+        <p>© {new Date().getFullYear()} Eclantis Capital Ltd. Registered in England &amp; Wales.</p>
+        <div className="flex flex-wrap gap-x-6 gap-y-2">
+          <Link to="/privacy" className="transition hover:text-cream">Privacy Policy</Link>
+          <Link to="/terms" className="transition hover:text-cream">Terms</Link>
+          <Link to="/cookies" className="transition hover:text-cream">Cookie Policy</Link>
+        </div>
       </div>
     </footer>
   )
@@ -184,8 +201,8 @@ export function Footer() {
 function FooterCol({ title, links }) {
   return (
     <div>
-      <div className="mb-3 text-[14px] font-bold text-cream">{title}</div>
-      <div className="flex flex-col gap-2 text-[14px]">
+      <div className="mb-4 text-[15px] font-bold text-cream">{title}</div>
+      <div className="flex flex-col gap-2.5 text-[15px]">
         {links.map(([label, to]) => (
           <Link key={label} to={to} className="text-cream/75 transition hover:text-cream">{label}</Link>
         ))}

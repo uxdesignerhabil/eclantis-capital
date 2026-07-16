@@ -109,7 +109,7 @@ export function Eyebrow({ children, className = "" }) {
 
 export function BtnPrimary({ to, children, className = "" }) {
   return (
-    <Link to={to} className={`inline-flex items-center justify-center gap-2 rounded-full bg-green px-8 py-4 text-[15px] font-bold text-cream shadow-[0_8px_24px_oklch(30%_0.07_155_/_0.3)] transition hover:bg-green-soft ${className}`}>
+    <Link to={to} className={`inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full bg-green px-8 py-4 text-[15px] font-bold text-cream shadow-[0_8px_24px_oklch(30%_0.07_155_/_0.3)] transition hover:bg-green-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green focus-visible:ring-offset-2 focus-visible:ring-offset-cream active:brightness-95 ${className}`}>
       {children}
     </Link>
   )

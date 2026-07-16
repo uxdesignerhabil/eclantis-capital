@@ -57,29 +57,40 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative overflow-hidden px-6 pb-40 pt-28 md:px-16 md:pb-56 md:pt-32">
-        <div className="pointer-events-none absolute -right-36 -top-36 h-[480px] w-[480px] rounded-full [background:radial-gradient(circle,oklch(80%_0.09_145_/_0.45),transparent_70%)]" />
-        <div className="pointer-events-none absolute -bottom-52 -left-40 h-[420px] w-[420px] rounded-full [background:radial-gradient(circle,oklch(85%_0.06_85_/_0.55),transparent_70%)]" />
+      <section className="relative overflow-hidden px-6 pb-[210px] pt-16 sm:pb-[300px] sm:pt-20 md:px-16 md:pb-[380px] md:pt-24">
+        {/* upper-right green atmospheric glow (subtle) */}
+        <div className="pointer-events-none absolute -right-36 -top-36 h-[460px] w-[460px] rounded-full [background:radial-gradient(circle,oklch(80%_0.09_145_/_0.30),transparent_70%)]" />
+        {/* soft warm glow behind the copy for readability */}
+        <div className="pointer-events-none absolute left-1/2 top-[24%] h-[420px] w-[820px] max-w-[92vw] -translate-x-1/2 rounded-full [background:radial-gradient(ellipse,oklch(98%_0.01_85_/_0.85),transparent_70%)]" />
+
+        {/* London skyline watermark — anchored to bottom, faded via mask, very light */}
         <img
           src="/skyline.webp"
           alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute -bottom-1 left-0 w-full select-none opacity-[0.85]"
+          width="1600"
+          height="685"
+          className="pointer-events-none absolute bottom-0 left-1/2 z-0 w-[165%] max-w-none -translate-x-1/2 select-none opacity-[0.10] sm:left-0 sm:w-full sm:translate-x-0 sm:opacity-[0.13] md:opacity-[0.15]"
+          style={{
+            WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.15) 30%, rgba(0,0,0,0.6) 66%, #000 100%)",
+            maskImage: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.15) 30%, rgba(0,0,0,0.6) 66%, #000 100%)",
+          }}
         />
-        <div className="relative z-10 mx-auto max-w-[780px] text-center">
-          <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-green/25 bg-surface/70 px-4 py-2 text-[13px] font-bold tracking-[0.02em] text-green">
-            <span className="h-[7px] w-[7px] rounded-full bg-dot" /> ACCOUNTING &amp; BUSINESS ADVISORY
-          </div>
-          <h1 className="text-[40px] font-black leading-[1.1] tracking-[-0.03em] text-balance md:text-[54px]">
+
+        <div className="relative z-10 mx-auto max-w-[900px] text-center">
+          <h1 className="mx-auto max-w-[880px] text-[34px] font-black leading-[1.08] tracking-[-0.03em] text-balance sm:text-[42px] md:text-[54px]">
             Helping businesses stay compliant while making smarter financial decisions.
           </h1>
-          <p className="mx-auto mt-6 max-w-[620px] text-[18px] leading-[1.65] text-ink/70">
+          <p className="mx-auto mt-6 max-w-[790px] text-[17px] leading-[1.65] text-ink/70 md:mt-7 md:text-[18px]">
             Eclantis Capital is a boutique accounting and advisory partner for small businesses, contractors and growing
             companies across the UK — with specialist experience supporting UK and UAE cross-border trade.
           </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <BtnPrimary to="/contact">Book a Free Consultation</BtnPrimary>
-            <Link to="/services" className="inline-flex items-center rounded-full border-[1.5px] border-line px-8 py-4 text-[15px] font-bold text-ink transition hover:border-green hover:text-green">
+          <div className="mt-8 flex flex-col items-center justify-center gap-3.5 sm:flex-row md:mt-9">
+            <BtnPrimary to="/contact" className="w-full min-h-[54px] sm:w-auto">Book a Free Consultation</BtnPrimary>
+            <Link
+              to="/services"
+              className="inline-flex min-h-[54px] w-full items-center justify-center rounded-full border-[1.5px] border-line bg-surface/60 px-8 text-[15px] font-bold text-ink transition hover:border-green hover:text-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green focus-visible:ring-offset-2 focus-visible:ring-offset-cream sm:w-auto"
+            >
               Explore Our Services
             </Link>
           </div>

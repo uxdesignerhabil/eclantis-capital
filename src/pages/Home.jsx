@@ -175,9 +175,11 @@ export default function Home() {
       <section className="bg-surface px-6 py-24 md:px-16">
         <div className="mx-auto flex max-w-[1000px] flex-wrap items-center gap-14">
           <div className="shrink-0">
-            <div className="flex h-[320px] w-[260px] items-center justify-center rounded-2xl bg-chip text-center text-[13px] font-semibold text-green/70 shadow-[0_20px_40px_-14px_oklch(20%_0.05_155_/_0.25)]">
-              Photo of<br />Daulat Anosh Khokhar
-            </div>
+            <img
+              src="/advisor.webp"
+              alt="Daulat Anosh Khokhar, Founder of Eclantis Capital"
+              className="h-[320px] w-[260px] rounded-2xl object-cover object-top shadow-[0_20px_40px_-14px_oklch(20%_0.05_155_/_0.25)]"
+            />
           </div>
           <div className="min-w-[300px] flex-1">
             <Eyebrow className="mb-3.5">Meet Your Advisor</Eyebrow>

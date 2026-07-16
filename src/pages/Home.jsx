@@ -57,10 +57,16 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative overflow-hidden px-6 pb-24 pt-28 md:px-16 md:pt-32">
+      <section className="relative overflow-hidden px-6 pb-40 pt-28 md:px-16 md:pb-56 md:pt-32">
         <div className="pointer-events-none absolute -right-36 -top-36 h-[480px] w-[480px] rounded-full [background:radial-gradient(circle,oklch(80%_0.09_145_/_0.45),transparent_70%)]" />
         <div className="pointer-events-none absolute -bottom-52 -left-40 h-[420px] w-[420px] rounded-full [background:radial-gradient(circle,oklch(85%_0.06_85_/_0.55),transparent_70%)]" />
-        <div className="relative mx-auto max-w-[780px] text-center">
+        <img
+          src="/skyline.webp"
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-1 left-0 w-full select-none opacity-[0.85]"
+        />
+        <div className="relative z-10 mx-auto max-w-[780px] text-center">
           <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-green/25 bg-surface/70 px-4 py-2 text-[13px] font-bold tracking-[0.02em] text-green">
             <span className="h-[7px] w-[7px] rounded-full bg-dot" /> ACCOUNTING &amp; BUSINESS ADVISORY
           </div>

@@ -15,6 +15,19 @@ const APPROACH = [
 
 const CREDS = ["🎓 ACCA Qualified", "📋 PMP Certified", "🎓 MSc Accounting & Finance", "🌍 UAE VAT & Treasury Experience"]
 
+const CERTS = [
+  { name: "Project Management Professional (PMP)®", issuer: "Project Management Institute", meta: "Issued Sep 2023 · Expires Sep 2026" },
+  { name: "Data Analytics for Business Professionals", issuer: "LinkedIn", meta: "Issued Oct 2021" },
+  { name: "Data Analysis with Python", issuer: "IBM", cred: "QBSFEWGMVRW2" },
+  { name: "People Analytics", issuer: "The Wharton School", cred: "ZTSDL594PGH3" },
+  { name: "Customer Analytics", issuer: "The Wharton School", cred: "D4RQST2LP4ER" },
+  { name: "Operations Analytics", issuer: "The Wharton School", cred: "BHCEY8TCKYX5" },
+  { name: "Accounting Analytics", issuer: "The Wharton School", cred: "CUVXFV6TU6QJ" },
+  { name: "Databases and SQL for Data Science with Python (with Honors)", issuer: "IBM", cred: "6VQ4JPD7JV2W" },
+  { name: "Data Science Specialization", issuer: "IBM", meta: "Issued Sep 2021", cred: "RQJAGJXK5ENP" },
+  { name: "Data Analytics Specialization", issuer: "Google", meta: "Issued Sep 2021", cred: "HHPR2NFHXG6Y" },
+]
+
 export default function About() {
   return (
     <>
@@ -28,14 +41,14 @@ export default function About() {
       <section className="mx-auto flex max-w-[1100px] flex-wrap items-start gap-16 px-6 py-24 md:px-16">
         <div className="shrink-0">
           <div className="relative">
-            <div className="absolute -inset-3.5 rounded-full [background:linear-gradient(135deg,oklch(70%_0.09_145_/_0.4),oklch(85%_0.06_85_/_0.5))]" />
-            <div className="relative mx-auto flex h-[230px] w-[230px] items-center justify-center overflow-hidden rounded-full bg-surface shadow-[0_20px_40px_-14px_oklch(20%_0.05_155_/_0.3)]">
-              <svg viewBox="0 0 230 230" width="230" height="230" fill="none" stroke="var(--color-green)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="115" cy="90" r="38" />
-                <path d="M50 195c0-40 30-65 65-65s65 25 65 65" />
-                <path d="M96 78c8 6 30 6 38 0" stroke="var(--color-green-soft)" />
-              </svg>
-            </div>
+            <div className="absolute -bottom-4 -right-4 h-full w-full rounded-[20px] border border-green/25" aria-hidden="true" />
+            <img
+              src="/advisor.webp"
+              alt="Daulat Anosh Khokhar, Founder of Eclantis Capital"
+              width="280"
+              height="350"
+              className="relative h-[350px] w-[280px] rounded-[20px] object-cover object-top shadow-[0_28px_54px_-18px_oklch(20%_0.05_155_/_0.32)]"
+            />
           </div>
         </div>
         <div className="min-w-[300px] flex-1 basis-[480px]">
@@ -89,11 +102,31 @@ export default function About() {
       </section>
 
       {/* Credentials */}
-      <section className="mx-auto max-w-[1100px] px-6 py-24 md:px-16">
+      <section className="mx-auto max-w-[1100px] px-6 pb-16 pt-24 md:px-16">
         <h2 className="mb-8 text-center text-3xl font-black tracking-[-0.02em]">Credentials</h2>
         <div className="flex flex-wrap justify-center gap-4">
           {CREDS.map((c) => (
             <div key={c} className="flex items-center gap-2.5 rounded-full border border-line bg-surface px-[22px] py-3 text-[14px] font-bold text-green shadow-[0_2px_8px_oklch(20%_0.05_155_/_0.05)]">{c}</div>
+          ))}
+        </div>
+      </section>
+
+      {/* Licenses & certifications */}
+      <section className="mx-auto max-w-[1100px] px-6 pb-24 md:px-16">
+        <h2 className="mb-8 text-center text-3xl font-black tracking-[-0.02em]">Licenses &amp; certifications</h2>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {CERTS.map((c) => (
+            <div key={c.name} className="flex items-start gap-4 rounded-xl border border-line2 bg-surface p-5">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-chip text-[15px] font-extrabold text-green">
+                {c.issuer[0]}
+              </span>
+              <div className="min-w-0">
+                <h3 className="text-[15.5px] font-extrabold leading-snug">{c.name}</h3>
+                <p className="mt-0.5 text-[14px] font-semibold text-green-soft">{c.issuer}</p>
+                {c.meta && <p className="mt-1 text-[13px] text-ink/55">{c.meta}</p>}
+                {c.cred && <p className="mt-1 text-[12px] font-medium tracking-[0.02em] text-ink/45">Credential ID · {c.cred}</p>}
+              </div>
+            </div>
           ))}
         </div>
       </section>

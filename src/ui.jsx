@@ -115,6 +115,18 @@ export function BtnPrimary({ to, children, className = "" }) {
   )
 }
 
+/** PwC-style orange inline link (external or mailto/tel). */
+export function TextLink({ href, children, external = false, className = "" }) {
+  const props = external
+    ? { href, target: "_blank", rel: "noopener noreferrer" }
+    : { href }
+  return (
+    <a {...props} className={`link-accent font-semibold ${className}`}>
+      {children}
+    </a>
+  )
+}
+
 export function BtnGold({ to, children }) {
   return (
     <Link to={to} className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-9 py-4 text-[15px] font-extrabold text-ink shadow-[0_8px_24px_oklch(72%_0.11_80_/_0.35)] transition hover:brightness-95">
@@ -154,33 +166,48 @@ export function CtaBand({ title, subtitle, button = "Book a Free Consultation" }
 /* ---------- Team grid (shared by Home + About) ---------- */
 export function TeamGrid({ members = [] }) {
   return (
-    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {members.map((m, i) => (
-        <div
-          key={m.name + i}
-          className={`rounded-2xl border p-6 text-center ${m.placeholder ? "border-dashed border-line bg-transparent" : "border-line2 bg-surface"}`}
-        >
-          {m.photo ? (
-            <img
-              src={m.photo}
-              alt={m.name}
-              width="112"
-              height="112"
-              className="mx-auto h-28 w-28 rounded-full object-cover object-top shadow-[0_10px_24px_-10px_oklch(20%_0.05_155_/_0.3)]"
-            />
-          ) : (
-            <div className={`mx-auto flex h-28 w-28 items-center justify-center rounded-full text-[22px] font-black ${m.placeholder ? "bg-chip/50 text-green/40" : "bg-chip text-green"}`}>
-              {m.placeholder ? "+" : Initials(m.name)}
-            </div>
-          )}
-          <h3 className={`mt-4 text-[18px] font-extrabold ${m.placeholder ? "text-ink/45" : ""}`}>{m.name}</h3>
-          <p className={`text-[14px] font-semibold ${m.placeholder ? "text-ink/35" : "text-green-soft"}`}>{m.role}</p>
-          <p className={`mx-auto mt-2 max-w-[260px] text-[14px] leading-[1.55] ${m.placeholder ? "text-ink/35" : "text-ink/65"}`}>{m.bio}</p>
-          {m.credentials && !m.placeholder && (
-            <div className="mt-3 inline-block rounded-full border border-line px-3 py-1 text-[12px] font-bold text-green">{m.credentials}</div>
-          )}
-        </div>
-      ))}
+    <div className="flex flex-wrap justify-center gap-6">
+      {members.map((m, i) => {
+        const inner = (
+          <>
+            {m.photo ? (
+              <img
+                src={m.photo}
+                alt={m.name}
+                width="120"
+                height="120"
+                className="mx-auto h-28 w-28 rounded-full object-cover object-top shadow-[0_10px_24px_-10px_oklch(20%_0.05_155_/_0.3)]"
+              />
+            ) : (
+              <div className={`mx-auto flex h-28 w-28 items-center justify-center rounded-full text-[22px] font-black ${m.placeholder ? "bg-chip/50 text-green/40" : "bg-chip text-green"}`}>
+                {m.placeholder ? "+" : Initials(m.name)}
+              </div>
+            )}
+            <h3 className={`mt-4 text-[18px] font-extrabold ${m.placeholder ? "text-ink/45" : ""}`}>{m.name}</h3>
+            <p className={`text-[14px] font-semibold ${m.placeholder ? "text-ink/35" : "text-green-soft"}`}>{m.role}</p>
+            <p className={`mx-auto mt-2 max-w-[260px] text-[14px] leading-[1.55] ${m.placeholder ? "text-ink/35" : "text-ink/65"}`}>{m.bio}</p>
+            {m.credentials && !m.placeholder && (
+              <div className="mt-3 inline-block rounded-full border border-line px-3 py-1 text-[12px] font-bold text-green">{m.credentials}</div>
+            )}
+            {!m.placeholder && m.slug && (
+              <div className="link-accent mt-4 text-[14px] font-bold">View profile →</div>
+            )}
+          </>
+        )
+        const base = "w-full max-w-[340px] rounded-2xl border p-6 text-center transition sm:w-[320px]"
+        if (!m.placeholder && m.slug) {
+          return (
+            <Link key={m.name + i} to={`/team/${m.slug}`} className={`${base} block border-line2 bg-surface hover:-translate-y-0.5 hover:border-green/30 hover:shadow-[0_14px_28px_-12px_oklch(20%_0.05_155_/_0.18)]`}>
+              {inner}
+            </Link>
+          )
+        }
+        return (
+          <div key={m.name + i} className={`${base} ${m.placeholder ? "border-dashed border-line bg-transparent" : "border-line2 bg-surface"}`}>
+            {inner}
+          </div>
+        )
+      })}
     </div>
   )
 }

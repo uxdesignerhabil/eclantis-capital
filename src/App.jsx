@@ -6,6 +6,7 @@ import About from "./pages/About.jsx"
 import Pricing from "./pages/Pricing.jsx"
 import Contact from "./pages/Contact.jsx"
 import Legal from "./pages/Legal.jsx"
+import TeamMember from "./pages/TeamMember.jsx"
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
           <Route path="/about" element={<About />} />
+          <Route path="/team/:slug" element={<TeamMember />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Legal title="Privacy Policy" />} />

@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import { Icon, Eyebrow, BtnPrimary, BtnGold, CtaBand, TeamGrid } from "../ui.jsx"
 import { TEAM } from "../team.js"
+import { TESTIMONIALS } from "../testimonials.js"
 
 const SERVICES = [
   { icon: "doc", name: "Accounting & Bookkeeping", desc: "Clean, current financial statements and management accounts so you always know where you stand.", to: "/services#accounting" },
@@ -57,7 +58,7 @@ export default function Home() {
       {/* HERO */}
       <section className="relative overflow-hidden px-6 pb-[180px] pt-16 sm:pb-[240px] sm:pt-20 md:px-16 md:pb-[300px] md:pt-24">
         {/* upper-right green atmospheric glow (subtle) */}
-        <div className="pointer-events-none absolute -right-36 -top-36 h-[460px] w-[460px] rounded-full [background:radial-gradient(circle,oklch(80%_0.09_145_/_0.30),transparent_70%)]" />
+        <div className="pointer-events-none absolute -right-36 -top-36 h-[460px] w-[460px] rounded-full [background:radial-gradient(circle,oklch(82%_0.08_60_/_0.28),transparent_70%)]" />
         {/* soft warm glow behind the copy for readability */}
         <div className="pointer-events-none absolute left-1/2 top-[24%] h-[420px] w-[820px] max-w-[92vw] -translate-x-1/2 rounded-full [background:radial-gradient(ellipse,oklch(98%_0.01_85_/_0.85),transparent_70%)]" />
 
@@ -122,7 +123,7 @@ export default function Home() {
                 </div>
                 <h3 className="mb-2.5 text-[21px] font-extrabold tracking-[-0.01em]">{s.name}</h3>
                 <p className="mb-5 flex-1 text-[15.5px] leading-[1.6] text-ink/70">{s.desc}</p>
-                <span className="text-[14px] font-bold text-green transition group-hover:translate-x-0.5">Learn more →</span>
+                <span className="link-accent text-[14px] font-bold transition group-hover:translate-x-0.5">Learn more →</span>
               </Link>
             ))}
           </div>
@@ -156,6 +157,33 @@ export default function Home() {
               <p className="text-[14.5px] leading-[1.6] text-ink/65">{w.desc}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* PHOTO BANNER */}
+      <section className="px-6 md:px-16">
+        <div className="relative mx-auto max-w-[1200px] overflow-hidden rounded-[24px]">
+          <img
+            src="/Long.png"
+            alt="The Eclantis Capital advisory team reviewing a client's financial overview"
+            width="1672"
+            height="941"
+            className="h-[380px] w-full object-cover object-center md:h-[440px]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-greendark/95 via-greendark/70 to-transparent" />
+          <div className="absolute inset-0 flex items-center">
+            <div className="max-w-[520px] px-8 md:px-14">
+              <div className="text-[13px] font-bold uppercase tracking-[0.06em] text-gold">Advisory in action</div>
+              <h2 className="mt-3 text-[28px] font-black leading-[1.15] tracking-[-0.02em] text-cream md:text-[36px]">
+                Clear numbers, sharper decisions, a partner beside you
+              </h2>
+              <p className="mt-4 text-[16px] leading-[1.6] text-cream/80">
+                We turn day-to-day accounting into insight you can act on — so you always know where the business
+                stands and what to do next.
+              </p>
+              <div className="mt-7"><BtnGold to="/contact">Book a Free Consultation</BtnGold></div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -210,7 +238,7 @@ export default function Home() {
           </div>
           <TeamGrid members={TEAM} />
           <div className="mt-10 text-center">
-            <Link to="/about" className="text-[14.5px] font-bold text-green hover:text-green-soft">Meet the team &amp; our story →</Link>
+            <Link to="/about" className="link-accent text-[14.5px] font-bold">Meet the team &amp; our story →</Link>
           </div>
         </div>
       </section>
@@ -222,25 +250,21 @@ export default function Home() {
             <Eyebrow className="mb-3.5">Client Testimonials</Eyebrow>
             <h2 className="text-3xl font-black tracking-[-0.02em] md:text-4xl">What clients say</h2>
           </div>
-          <div className="grid gap-6 md:grid-cols-2">
-            {[0, 1].map((i) => (
-              <figure key={i} className="relative overflow-hidden rounded-[20px] border border-line2 bg-surface p-9 md:p-11">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {TESTIMONIALS.map((t) => (
+              <figure key={t.name + t.role} className="relative overflow-hidden rounded-[20px] border border-line2 bg-surface p-9 md:p-10">
                 <span aria-hidden="true" className="pointer-events-none absolute right-6 top-3 font-black text-[90px] leading-none text-green/10">”</span>
                 <div className="mb-5 text-[16px] tracking-[3px] text-star">★★★★★</div>
-                <blockquote className="text-[21px] font-semibold leading-[1.5] tracking-[-0.01em] text-ink/85 md:text-[23px]">
-                  Real client quote to be added here — a specific outcome or experience in the client’s own words.
+                <blockquote className="text-[19px] font-semibold leading-[1.5] tracking-[-0.01em] text-ink/85 md:text-[21px]">
+                  {t.quote}
                 </blockquote>
-                <figcaption className="mt-7 flex items-center gap-3.5 border-t border-line pt-6">
-                  <span className="h-12 w-12 shrink-0 rounded-full bg-chip" />
-                  <div>
-                    <div className="text-[15px] font-extrabold">Client name</div>
-                    <div className="text-[13.5px] text-ink/55">Business type · Location</div>
-                  </div>
+                <figcaption className="mt-7 border-t border-line pt-6">
+                  <div className="text-[15px] font-extrabold">{t.name}</div>
+                  <div className="text-[13.5px] text-ink/55">{t.role}</div>
                 </figcaption>
               </figure>
             ))}
           </div>
-          <p className="mt-6 text-center text-[13px] text-ink/45">Testimonials are placeholders — replace with real client quotes before launch.</p>
         </div>
       </section>
 

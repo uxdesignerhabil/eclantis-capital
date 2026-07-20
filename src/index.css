@@ -3,19 +3,22 @@
 @theme {
   --font-sans: "Public Sans", ui-sans-serif, system-ui, sans-serif;
 
-  --color-cream: oklch(97% 0.015 85);
-  --color-surface: oklch(99% 0.008 85);
-  --color-green: oklch(30% 0.07 155);
-  --color-green-soft: oklch(42% 0.06 155);
-  --color-greendark: oklch(22% 0.05 155);
-  --color-greendark2: oklch(28% 0.06 155);
-  --color-ink: oklch(20% 0.02 150);
-  --color-gold: oklch(72% 0.11 80);
-  --color-star: oklch(70% 0.15 80);
-  --color-line: oklch(85% 0.02 85);
-  --color-line2: oklch(88% 0.015 85);
-  --color-chip: oklch(94% 0.03 145);
-  --color-dot: oklch(60% 0.15 145);
+  /* PwC-inspired palette: warm off-white, charcoal dark bands, orange primary/links */
+  --color-cream: oklch(97% 0.011 82);
+  --color-surface: oklch(99% 0.006 82);
+  --color-green: oklch(53% 0.19 44);        /* primary accent (PwC orange) */
+  --color-green-soft: oklch(62% 0.17 48);   /* brighter orange — hover / eyebrows */
+  --color-greendark: oklch(24% 0.015 55);   /* charcoal dark band */
+  --color-greendark2: oklch(33% 0.028 50);  /* charcoal gradient end */
+  --color-ink: oklch(23% 0.012 60);         /* near-black warm text */
+  --color-gold: oklch(71% 0.16 56);         /* tangerine accent (dark-band CTAs) */
+  --color-orange: oklch(56% 0.19 43);       /* inline text links */
+  --color-orange-soft: oklch(64% 0.17 48);
+  --color-star: oklch(72% 0.14 70);         /* amber stars */
+  --color-line: oklch(88% 0.012 78);
+  --color-line2: oklch(90% 0.01 78);
+  --color-chip: oklch(93% 0.045 55);        /* pale orange chip */
+  --color-dot: oklch(60% 0.18 45);          /* orange dot */
 }
 
 :root { color-scheme: light; }
@@ -32,3 +35,16 @@ body {
 }
 
 a { text-decoration: none; }
+
+.link-accent {
+  color: var(--color-orange);
+  text-decoration: underline;
+  text-decoration-color: oklch(58% 0.19 45 / 0.35);
+  text-underline-offset: 3px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.link-accent:hover {
+  color: var(--color-orange-soft);
+  text-decoration-color: var(--color-orange-soft);
+}

@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import { Icon, Eyebrow, BtnPrimary, BtnGold, CtaBand } from "../ui.jsx"
+import { Icon, Eyebrow, BtnPrimary, BtnGold, CtaBand, TeamGrid } from "../ui.jsx"
+import { TEAM } from "../team.js"
 
 const SERVICES = [
   { icon: "doc", name: "Accounting & Bookkeeping", desc: "Clean, current financial statements and management accounts so you always know where you stand.", to: "/services#accounting" },
@@ -48,7 +49,6 @@ const FAQS = [
   ["Can you help businesses operating in both the UK and UAE?", "Yes — this is a core specialism, drawing on direct hands-on experience in both markets."],
 ]
 
-const CREDS = ["ACCA Qualified", "MSc Accounting & Finance", "PMP Certified"]
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState(0)
@@ -200,39 +200,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* MEET YOUR ADVISOR */}
+      {/* MEET THE TEAM */}
       <section className="bg-surface px-6 py-24 md:px-16">
-        <div className="mx-auto flex max-w-[1040px] flex-wrap items-center gap-14 md:gap-16">
-          <div className="shrink-0">
-            <div className="relative">
-              <div className="absolute -bottom-4 -left-4 h-full w-full rounded-[20px] border border-green/20" aria-hidden="true" />
-              <img
-                src="/advisor.webp"
-                alt="Daulat Anosh Khokhar, Founder of Eclantis Capital"
-                width="300"
-                height="380"
-                className="relative h-[380px] w-[300px] rounded-[20px] object-cover object-top shadow-[0_28px_54px_-18px_oklch(20%_0.05_155_/_0.32)]"
-              />
-            </div>
+        <div className="mx-auto max-w-[1100px]">
+          <div className="mx-auto mb-14 max-w-[640px] text-center">
+            <Eyebrow className="mb-3.5">Our Team</Eyebrow>
+            <h2 className="text-3xl font-black tracking-[-0.02em] text-balance md:text-4xl">Qualified accountants and advisers behind your business</h2>
+            <p className="mt-4 text-[17px] leading-6 text-ink/65">A growing team combining UK compliance expertise with hands-on UK–UAE experience.</p>
           </div>
-          <div className="min-w-[300px] flex-1">
-            <Eyebrow className="mb-3.5">Meet Your Advisor</Eyebrow>
-            <h2 className="text-[32px] font-black tracking-[-0.02em] md:text-[38px]">Meet Daulat Anosh Khokhar</h2>
-            <p className="mb-5 mt-2 text-[15px] font-semibold text-green-soft">Founder · ACCA-qualified accountant</p>
-            <p className="mb-4 text-[17px] leading-[1.7] text-ink/80">
-              An ACCA-qualified accountant with hands-on experience across UK accounting, taxation and finance — and VAT
-              and treasury in the UAE.
-            </p>
-            <p className="mb-6 text-[16px] leading-[1.7] text-ink/70">
-              For you, that means a single advisor who genuinely understands both markets, plans ahead rather than
-              reacting to deadlines, and stays personally accountable for your numbers all year round.
-            </p>
-            <div className="flex flex-wrap gap-2.5">
-              {CREDS.map((c) => (
-                <div key={c} className="rounded-md border border-line px-3.5 py-2 text-[12.5px] font-bold text-green">{c}</div>
-              ))}
-            </div>
-            <Link to="/about" className="mt-6 inline-block text-[14.5px] font-bold text-green hover:text-green-soft">Read the full story →</Link>
+          <TeamGrid members={TEAM} />
+          <div className="mt-10 text-center">
+            <Link to="/about" className="text-[14.5px] font-bold text-green hover:text-green-soft">Meet the team &amp; our story →</Link>
           </div>
         </div>
       </section>

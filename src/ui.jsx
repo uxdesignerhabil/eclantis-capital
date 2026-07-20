@@ -151,6 +151,45 @@ export function CtaBand({ title, subtitle, button = "Book a Free Consultation" }
   )
 }
 
+/* ---------- Team grid (shared by Home + About) ---------- */
+export function TeamGrid({ members = [] }) {
+  return (
+    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {members.map((m, i) => (
+        <div
+          key={m.name + i}
+          className={`rounded-2xl border p-6 text-center ${m.placeholder ? "border-dashed border-line bg-transparent" : "border-line2 bg-surface"}`}
+        >
+          {m.photo ? (
+            <img
+              src={m.photo}
+              alt={m.name}
+              width="112"
+              height="112"
+              className="mx-auto h-28 w-28 rounded-full object-cover object-top shadow-[0_10px_24px_-10px_oklch(20%_0.05_155_/_0.3)]"
+            />
+          ) : (
+            <div className={`mx-auto flex h-28 w-28 items-center justify-center rounded-full text-[22px] font-black ${m.placeholder ? "bg-chip/50 text-green/40" : "bg-chip text-green"}`}>
+              {m.placeholder ? "+" : Initials(m.name)}
+            </div>
+          )}
+          <h3 className={`mt-4 text-[18px] font-extrabold ${m.placeholder ? "text-ink/45" : ""}`}>{m.name}</h3>
+          <p className={`text-[14px] font-semibold ${m.placeholder ? "text-ink/35" : "text-green-soft"}`}>{m.role}</p>
+          <p className={`mx-auto mt-2 max-w-[260px] text-[14px] leading-[1.55] ${m.placeholder ? "text-ink/35" : "text-ink/65"}`}>{m.bio}</p>
+          {m.credentials && !m.placeholder && (
+            <div className="mt-3 inline-block rounded-full border border-line px-3 py-1 text-[12px] font-bold text-green">{m.credentials}</div>
+          )}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function Initials(name) {
+  const p = name.trim().split(/\s+/)
+  return ((p[0]?.[0] || "") + (p[1]?.[0] || "")).toUpperCase()
+}
+
 /* ---------- Footer ---------- */
 export function Footer() {
   return (

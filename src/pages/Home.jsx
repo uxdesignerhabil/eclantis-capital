@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import { Icon, Eyebrow, BtnPrimary, BtnGold, CtaBand, TeamGrid } from "../ui.jsx"
+import { Icon, Eyebrow, BtnPrimary, CtaBand, TeamGrid } from "../ui.jsx"
 import { TEAM } from "../team.js"
 import { TESTIMONIALS } from "../testimonials.js"
 
@@ -56,25 +56,9 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative overflow-hidden px-6 pb-[180px] pt-16 sm:pb-[240px] sm:pt-20 md:px-16 md:pb-[300px] md:pt-24">
-        {/* upper-right green atmospheric glow (subtle) */}
+      <section className="relative overflow-hidden px-6 pb-16 pt-16 md:px-16 md:pb-20 md:pt-24">
+        {/* upper-right warm atmospheric glow (subtle) */}
         <div className="pointer-events-none absolute -right-36 -top-36 h-[460px] w-[460px] rounded-full [background:radial-gradient(circle,oklch(82%_0.08_60_/_0.28),transparent_70%)]" />
-        {/* soft warm glow behind the copy for readability */}
-        <div className="pointer-events-none absolute left-1/2 top-[24%] h-[420px] w-[820px] max-w-[92vw] -translate-x-1/2 rounded-full [background:radial-gradient(ellipse,oklch(98%_0.01_85_/_0.85),transparent_70%)]" />
-
-        {/* London skyline watermark — anchored to bottom, faded via mask, very light */}
-        <img
-          src="/skyline.webp"
-          alt=""
-          aria-hidden="true"
-          width="1600"
-          height="685"
-          className="pointer-events-none absolute bottom-0 left-1/2 z-0 w-[165%] max-w-none -translate-x-1/2 select-none opacity-[0.10] sm:left-0 sm:w-full sm:translate-x-0 sm:opacity-[0.13] md:opacity-[0.15]"
-          style={{
-            WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.15) 30%, rgba(0,0,0,0.6) 66%, #000 100%)",
-            maskImage: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.15) 30%, rgba(0,0,0,0.6) 66%, #000 100%)",
-          }}
-        />
 
         <div className="relative z-10 mx-auto max-w-[900px] text-center">
           <h1 className="mx-auto max-w-[880px] text-[34px] font-black leading-[1.08] tracking-[-0.03em] text-balance sm:text-[42px] md:text-[54px]">
@@ -102,6 +86,29 @@ export default function Home() {
                 {i < TRUST.length - 1 && <span className="text-ink/25">·</span>}
               </span>
             ))}
+          </div>
+        </div>
+
+        {/* Hero photo + floating testimonial */}
+        <div className="relative z-10 mx-auto mt-14 max-w-[1100px] md:mt-16">
+          <div className="relative overflow-hidden rounded-[24px]">
+            <img
+              src="/Long.png"
+              alt="The Eclantis Capital advisory team reviewing a client's financial overview"
+              width="1672"
+              height="941"
+              className="h-[300px] w-full object-cover object-center sm:h-[380px] md:h-[460px]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-greendark/70 via-greendark/0 to-transparent" />
+          </div>
+
+          {/* Floating testimonial card */}
+          <div className="relative -mt-14 px-4 sm:absolute sm:bottom-6 sm:left-6 sm:mt-0 sm:max-w-[380px] sm:px-0 md:bottom-8 md:left-8">
+            <div className="rounded-2xl border border-line2 bg-surface/95 p-6 shadow-[0_20px_44px_-16px_oklch(20%_0.05_155_/_0.28)] backdrop-blur-sm">
+              <div className="mb-3 text-[15px] tracking-[2.5px] text-star">★★★★★</div>
+              <p className="text-[15px] font-semibold italic leading-[1.55] text-ink/85">“{TESTIMONIALS[0].quote}”</p>
+              <p className="mt-3 text-[13px] font-bold text-green">{TESTIMONIALS[0].name} <span className="font-medium text-ink/50">· {TESTIMONIALS[0].role}</span></p>
+            </div>
           </div>
         </div>
       </section>
@@ -157,33 +164,6 @@ export default function Home() {
               <p className="text-[14.5px] leading-[1.6] text-ink/65">{w.desc}</p>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* PHOTO BANNER */}
-      <section className="px-6 md:px-16">
-        <div className="relative mx-auto max-w-[1200px] overflow-hidden rounded-[24px]">
-          <img
-            src="/Long.png"
-            alt="The Eclantis Capital advisory team reviewing a client's financial overview"
-            width="1672"
-            height="941"
-            className="h-[380px] w-full object-cover object-center md:h-[440px]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-greendark/95 via-greendark/70 to-transparent" />
-          <div className="absolute inset-0 flex items-center">
-            <div className="max-w-[520px] px-8 md:px-14">
-              <div className="text-[13px] font-bold uppercase tracking-[0.06em] text-gold">Advisory in action</div>
-              <h2 className="mt-3 text-[28px] font-black leading-[1.15] tracking-[-0.02em] text-cream md:text-[36px]">
-                Clear numbers, sharper decisions, a partner beside you
-              </h2>
-              <p className="mt-4 text-[16px] leading-[1.6] text-cream/80">
-                We turn day-to-day accounting into insight you can act on — so you always know where the business
-                stands and what to do next.
-              </p>
-              <div className="mt-7"><BtnGold to="/contact">Book a Free Consultation</BtnGold></div>
-            </div>
-          </div>
         </div>
       </section>
 

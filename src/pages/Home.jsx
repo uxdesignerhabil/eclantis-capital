@@ -58,58 +58,61 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative overflow-hidden px-6 pb-16 pt-16 md:px-16 md:pb-20 md:pt-24">
+      <section className="relative overflow-hidden px-6 py-16 md:px-16 md:py-20">
         {/* upper-right warm atmospheric glow (subtle) */}
         <div className="pointer-events-none absolute -right-36 -top-36 h-[460px] w-[460px] rounded-full [background:radial-gradient(circle,oklch(82%_0.08_60_/_0.28),transparent_70%)]" />
 
-        <div className="relative z-10 mx-auto max-w-[900px] text-center">
-          <h1 className="mx-auto max-w-[620px] text-[30px] font-black leading-[1.12] tracking-[-0.03em] text-balance sm:text-[38px] md:text-[46px]">
-            Accounting that pays for itself.
-          </h1>
-          <p className="mx-auto mt-5 max-w-[600px] text-[17px] leading-[1.6] text-ink/80 md:mt-6 md:text-[19px]">
-            Tax, bookkeeping, payroll and business advisory for UK companies — with specialist support for UK–UAE
-            operations. Book a free consultation to see where you could save.
-          </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3.5 sm:flex-row md:mt-9">
-            <BtnPrimary to="/contact" className="w-full min-h-[54px] sm:w-auto">Book a Free Consultation</BtnPrimary>
-            <Link
-              to="/services"
-              className="inline-flex min-h-[54px] w-full items-center justify-center rounded-full border-[1.5px] border-ink/30 bg-surface/70 px-8 text-[15px] font-bold text-ink transition hover:border-green hover:bg-surface hover:text-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green focus-visible:ring-offset-2 focus-visible:ring-offset-cream sm:w-auto"
-            >
-              Explore Our Services
-            </Link>
+        <div className="relative z-10 mx-auto grid max-w-[1200px] items-center gap-12 lg:grid-cols-2 lg:gap-10">
+          {/* Left — copy + actions */}
+          <div className="text-center lg:text-left">
+            <h1 className="mx-auto max-w-[560px] text-[30px] font-black leading-[1.12] tracking-[-0.03em] text-balance sm:text-[38px] md:text-[46px] lg:mx-0">
+              Accounting that pays for itself.
+            </h1>
+            <p className="mx-auto mt-5 max-w-[540px] text-[17px] leading-[1.6] text-ink/80 md:mt-6 md:text-[19px] lg:mx-0">
+              Tax, bookkeeping, payroll and business advisory for UK companies — with specialist support for UK–UAE
+              operations. Book a free consultation to see where you could save.
+            </p>
+            <div className="mt-8 flex flex-col items-center justify-center gap-3.5 sm:flex-row lg:justify-start">
+              <BtnPrimary to="/contact" className="w-full min-h-[54px] sm:w-auto">Book a Free Consultation</BtnPrimary>
+              <Link
+                to="/services"
+                className="inline-flex min-h-[54px] w-full items-center justify-center rounded-full border-[1.5px] border-ink/30 bg-surface/70 px-8 text-[15px] font-bold text-ink transition hover:border-green hover:bg-surface hover:text-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green focus-visible:ring-offset-2 focus-visible:ring-offset-cream sm:w-auto"
+              >
+                Explore Our Services
+              </Link>
+            </div>
+
+            {/* Trust line — sits directly under the CTAs */}
+            <div className="mt-7 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[13.5px] font-semibold text-ink/65 lg:justify-start">
+              {TRUST.map((t, i) => (
+                <span key={t} className="inline-flex items-center gap-3">
+                  <span className="inline-flex items-center gap-1.5"><span className="text-green"><Icon name="check" size={13} /></span>{t}</span>
+                  {i < TRUST.length - 1 && <span className="text-ink/25">·</span>}
+                </span>
+              ))}
+            </div>
           </div>
 
-          {/* Trust line — sits directly under the CTAs */}
-          <div className="mt-7 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[13.5px] font-semibold text-ink/65">
-            {TRUST.map((t, i) => (
-              <span key={t} className="inline-flex items-center gap-3">
-                <span className="inline-flex items-center gap-1.5"><span className="text-green"><Icon name="check" size={13} /></span>{t}</span>
-                {i < TRUST.length - 1 && <span className="text-ink/25">·</span>}
-              </span>
-            ))}
-          </div>
-        </div>
+          {/* Right — photo + floating testimonial */}
+          <div className="relative">
+            <div className="relative overflow-hidden rounded-[24px]">
+              <img
+                src="/Long.png"
+                alt="The Eclantis Capital advisory team reviewing a client's financial overview"
+                width="1672"
+                height="941"
+                className="h-[300px] w-full object-cover object-center sm:h-[380px] lg:h-[420px]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-greendark/70 via-greendark/0 to-transparent" />
+            </div>
 
-        {/* Hero photo + floating testimonial */}
-        <div className="relative z-10 mx-auto mt-14 max-w-[1100px] md:mt-16">
-          <div className="relative overflow-hidden rounded-[24px]">
-            <img
-              src="/Long.png"
-              alt="The Eclantis Capital advisory team reviewing a client's financial overview"
-              width="1672"
-              height="941"
-              className="h-[300px] w-full object-cover object-center sm:h-[380px] md:h-[460px]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-greendark/70 via-greendark/0 to-transparent" />
-          </div>
-
-          {/* Floating testimonial card */}
-          <div className="relative -mt-14 px-4 sm:absolute sm:bottom-6 sm:left-6 sm:mt-0 sm:max-w-[380px] sm:px-0 md:bottom-8 md:left-8">
-            <div className="rounded-2xl border border-line2 bg-surface/95 p-6 shadow-[0_20px_44px_-16px_oklch(20%_0.05_155_/_0.28)] backdrop-blur-sm">
-              <div className="mb-3 text-[15px] tracking-[2.5px] text-star">★★★★★</div>
-              <p className="text-[15px] font-semibold italic leading-[1.55] text-ink/85">“{TESTIMONIALS[0].quote}”</p>
-              <p className="mt-3 text-[13px] font-bold text-green">{TESTIMONIALS[0].name} <span className="font-medium text-ink/50">· {TESTIMONIALS[0].role}</span></p>
+            {/* Floating testimonial card */}
+            <div className="relative -mt-14 px-4 sm:absolute sm:bottom-6 sm:left-6 sm:mt-0 sm:max-w-[360px] sm:px-0 lg:bottom-6 lg:left-6">
+              <div className="rounded-2xl border border-line2 bg-surface/95 p-6 shadow-[0_20px_44px_-16px_oklch(20%_0.05_155_/_0.28)] backdrop-blur-sm">
+                <div className="mb-3 text-[15px] tracking-[2.5px] text-star">★★★★★</div>
+                <p className="text-[15px] font-semibold italic leading-[1.55] text-ink/85">“{TESTIMONIALS[0].quote}”</p>
+                <p className="mt-3 text-[13px] font-bold text-green">{TESTIMONIALS[0].name} <span className="font-medium text-ink/50">· {TESTIMONIALS[0].role}</span></p>
+              </div>
             </div>
           </div>
         </div>

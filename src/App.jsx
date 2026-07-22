@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom"
-import { Header, Footer, ScrollToTop } from "./ui.jsx"
+import { Header, Footer, ScrollToTop, StickyWhatsApp } from "./ui.jsx"
 import Home from "./pages/Home.jsx"
 import Services from "./pages/Services.jsx"
 import About from "./pages/About.jsx"
@@ -27,6 +27,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <StickyWhatsApp />
     </div>
   )
 }

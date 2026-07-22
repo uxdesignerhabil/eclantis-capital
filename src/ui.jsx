@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link, NavLink, useLocation } from "react-router-dom"
+import { CONTACT } from "./contact.js"
 
 /* ---------- Icons (stroke line-style, matching the handoff) ---------- */
 const P = { fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" }
@@ -26,6 +27,8 @@ export function Icon({ name, size = 24 }) {
     clock: <g {...P}><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></g>,
     checksquare: <g {...P}><path d="M9 11l3 3L22 4" /><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" /></g>,
     arrowRight: <g {...P}><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></g>,
+    phone: <g {...P}><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" /></g>,
+    chat: <g {...P}><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" /></g>,
   }
   return <svg width={size} height={size} viewBox="0 0 24 24">{paths[name]}</svg>
 }
@@ -76,6 +79,9 @@ export function Header() {
               {label}
             </NavLink>
           ))}
+          <a href={CONTACT.phoneHref} className="hidden items-center gap-1.5 text-[14px] font-semibold text-ink transition hover:text-green xl:inline-flex">
+            <Icon name="phone" size={15} /> {CONTACT.phoneDisplay}
+          </a>
           <Link to="/contact" className="rounded-full bg-green px-6 py-3 text-[14px] font-semibold text-cream shadow-[0_4px_14px_oklch(30%_0.07_155_/_0.25)] transition hover:bg-green-soft">
             Book a Free Consultation
           </Link>
@@ -95,6 +101,9 @@ export function Header() {
                 {label}
               </NavLink>
             ))}
+            <a href={CONTACT.phoneHref} className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2.5 text-[15px] font-medium text-ink">
+              <Icon name="phone" size={15} /> {CONTACT.phoneDisplay}
+            </a>
             <Link to="/contact" onClick={() => setOpen(false)} className="mt-2 rounded-full bg-green px-5 py-3 text-center text-[15px] font-semibold text-cream">
               Book a Free Consultation
             </Link>
@@ -220,6 +229,21 @@ function Initials(name) {
   return ((p[0]?.[0] || "") + (p[1]?.[0] || "")).toUpperCase()
 }
 
+/* ---------- Sticky WhatsApp button (persists across all pages) ---------- */
+export function StickyWhatsApp() {
+  return (
+    <a
+      href={CONTACT.whatsappHref}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Chat with us on WhatsApp"
+      className="fixed bottom-5 right-5 z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_10px_28px_-6px_rgba(0,0,0,0.35)] transition hover:scale-105 hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 focus-visible:ring-offset-cream sm:bottom-7 sm:right-7"
+    >
+      <Icon name="chat" size={26} />
+    </a>
+  )
+}
+
 /* ---------- Footer ---------- */
 export function Footer() {
   return (
@@ -242,8 +266,11 @@ export function Footer() {
         <div>
           <div className="mb-4 text-[15px] font-bold text-cream">Contact</div>
           <div className="flex flex-col gap-2.5 text-[15px] text-cream/75">
-            <a href="mailto:hello@eclantiscapital.co.uk" className="transition hover:text-cream">hello@eclantiscapital.co.uk</a>
-            <a href="tel:+442000000000" className="transition hover:text-cream">+44 20 0000 0000</a>
+            <a href={`mailto:${CONTACT.email}`} className="transition hover:text-cream">{CONTACT.email}</a>
+            <a href={CONTACT.phoneHref} className="transition hover:text-cream">{CONTACT.phoneDisplay}</a>
+            <a href={CONTACT.whatsappHref} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 transition hover:text-cream">
+              <Icon name="chat" size={14} /> WhatsApp us
+            </a>
             <span className="text-cream/55">London, UK · Dubai, UAE</span>
           </div>
         </div>

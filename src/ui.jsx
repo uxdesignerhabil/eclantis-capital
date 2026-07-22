@@ -51,7 +51,6 @@ const NAV = [
   ["Home", "/"],
   ["Services", "/services"],
   ["About", "/about"],
-  ["Pricing", "/pricing"],
   ["Contact", "/contact"],
 ]
 
@@ -147,7 +146,7 @@ export function BtnGold({ to, children }) {
   )
 }
 
-/* Dark-green page hero band used on Services / About / Pricing / Contact */
+/* Dark-green page hero band used on Services / About / Contact */
 export function HeroBand({ eyebrow, title, subtitle }) {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-greendark to-greendark2 px-6 py-20 md:px-16">
@@ -262,7 +261,7 @@ export function Footer() {
           </div>
         </div>
         <FooterCol title="Services" links={[["Accounting", "/services#accounting"], ["Tax", "/services#tax"], ["Advisory", "/services#advisory"], ["Payroll", "/services#payroll"]]} />
-        <FooterCol title="Company" links={[["About", "/about"], ["Pricing", "/pricing"], ["Contact", "/contact"]]} />
+        <FooterCol title="Company" links={[["About", "/about"], ["Contact", "/contact"]]} />
         <div>
           <div className="mb-4 text-[15px] font-bold text-cream">Contact</div>
           <div className="flex flex-col gap-2.5 text-[15px] text-cream/75">

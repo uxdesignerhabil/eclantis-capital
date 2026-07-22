@@ -3,7 +3,6 @@ import { Header, Footer, ScrollToTop, StickyWhatsApp } from "./ui.jsx"
 import Home from "./pages/Home.jsx"
 import Services from "./pages/Services.jsx"
 import About from "./pages/About.jsx"
-import Pricing from "./pages/Pricing.jsx"
 import Contact from "./pages/Contact.jsx"
 import Legal from "./pages/Legal.jsx"
 import TeamMember from "./pages/TeamMember.jsx"
@@ -19,7 +18,6 @@ export default function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/about" element={<About />} />
           <Route path="/team/:slug" element={<TeamMember />} />
-          <Route path="/pricing" element={<Pricing />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Legal title="Privacy Policy" />} />
           <Route path="/terms" element={<Legal title="Terms" />} />

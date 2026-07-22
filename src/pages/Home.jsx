@@ -15,6 +15,8 @@ const SERVICES = [
 
 const TRUST = ["ACCA qualified", "10+ years’ experience", "UK & UAE expertise", "HMRC compliant"]
 
+const PLATFORMS = ["Xero", "QuickBooks", "Sage", "CCH", "HMRC"]
+
 const WHY = [
   { icon: "users", title: "Dedicated Advisor", desc: "One point of contact, start to finish — never passed between departments." },
   { icon: "calendar", title: "Proactive Tax Planning", desc: "Legal opportunities identified before deadlines, not after." },
@@ -61,12 +63,12 @@ export default function Home() {
         <div className="pointer-events-none absolute -right-36 -top-36 h-[460px] w-[460px] rounded-full [background:radial-gradient(circle,oklch(82%_0.08_60_/_0.28),transparent_70%)]" />
 
         <div className="relative z-10 mx-auto max-w-[900px] text-center">
-          <h1 className="mx-auto max-w-[880px] text-[34px] font-black leading-[1.08] tracking-[-0.03em] text-balance sm:text-[42px] md:text-[54px]">
-            Helping businesses stay compliant while making smarter financial decisions.
+          <h1 className="mx-auto max-w-[620px] text-[30px] font-black leading-[1.12] tracking-[-0.03em] text-balance sm:text-[38px] md:text-[46px]">
+            Accounting that pays for itself.
           </h1>
-          <p className="mx-auto mt-6 max-w-[640px] text-[18px] leading-[1.6] text-ink/80 md:mt-7 md:text-[20px]">
-            Eclantis Capital provides accounting, tax and business advisory for UK businesses, with specialist experience
-            supporting UK–UAE operations.
+          <p className="mx-auto mt-5 max-w-[600px] text-[17px] leading-[1.6] text-ink/80 md:mt-6 md:text-[19px]">
+            Tax, bookkeeping, payroll and business advisory for UK companies — with specialist support for UK–UAE
+            operations. Book a free consultation to see where you could save.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3.5 sm:flex-row md:mt-9">
             <BtnPrimary to="/contact" className="w-full min-h-[54px] sm:w-auto">Book a Free Consultation</BtnPrimary>
@@ -146,6 +148,18 @@ export default function Home() {
           </div>
           <div className="mt-12 text-center">
             <BtnPrimary to="/contact" className="shadow-[0_8px_20px_oklch(30%_0.07_155_/_0.25)]">Book a Free Consultation</BtnPrimary>
+          </div>
+        </div>
+      </section>
+
+      {/* PLATFORMS WE WORK WITH */}
+      <section className="bg-greendark px-6 py-14 md:px-16">
+        <div className="mx-auto max-w-[1100px] text-center">
+          <div className="text-[12px] font-bold uppercase tracking-[0.08em] text-gold">Platforms &amp; software we work with</div>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-12 gap-y-5">
+            {PLATFORMS.map((name) => (
+              <span key={name} className="text-[18px] font-extrabold tracking-[-0.01em] text-cream/80 md:text-[21px]">{name}</span>
+            ))}
           </div>
         </div>
       </section>

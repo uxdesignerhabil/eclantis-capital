@@ -1,10 +1,10 @@
-import { HeroBand, CtaBand, TeamGrid } from "../ui.jsx"
+import { HeroBand, CtaBand, TeamGrid, Icon } from "../ui.jsx"
 import { TEAM } from "../team.js"
 
 const APPROACH = [
-  ["Proactive, not reactive", "Tax planning and financial advice happen throughout the year, not just at deadline time."],
-  ["One advisor, every jurisdiction", "UK and UAE matters are handled by the same team — no gaps between separate advisers."],
-  ["Plain-English communication", "Financial and tax matters explained clearly, so you always know what's happening and why."],
+  ["clock", "Proactive, not reactive", "Tax planning and financial advice happen throughout the year, not just at deadline time."],
+  ["globe", "One advisor, every jurisdiction", "UK and UAE matters are handled by the same team — no gaps between separate advisers."],
+  ["doc", "Plain-English communication", "Financial and tax matters explained clearly, so you always know what's happening and why."],
 ]
 
 const CREDS = ["ACCA Qualified", "PMP Certified", "MSc Accounting & Finance", "UAE VAT & Treasury Experience"]
@@ -49,9 +49,11 @@ export default function About() {
         <div className="mx-auto max-w-[1100px]">
           <h2 className="mb-10 text-center text-3xl font-black tracking-[-0.02em]">Our approach</h2>
           <div className="grid gap-x-10 gap-y-11 md:grid-cols-3">
-            {APPROACH.map(([title, desc]) => (
+            {APPROACH.map(([icon, title, desc]) => (
               <div key={title}>
-                <div className="mb-4 h-11 w-11 rounded-xl bg-gradient-to-br from-green to-green-soft" />
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-green to-green-soft text-cream">
+                  <Icon name={icon} size={20} />
+                </div>
                 <h3 className="mb-2 text-[17px] font-extrabold">{title}</h3>
                 <p className="text-[15px] leading-6 text-ink/65">{desc}</p>
               </div>

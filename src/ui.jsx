@@ -54,6 +54,9 @@ const NAV = [
 
 export function Header() {
   const [open, setOpen] = useState(false)
+  const { pathname } = useLocation()
+  const isHome = pathname === "/"
+  const nav = isHome ? NAV.filter(([, to]) => to !== "/") : NAV
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-cream/90 backdrop-blur-md">
       <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-4 px-6 py-4 md:px-16">
@@ -61,7 +64,7 @@ export function Header() {
           <LogoMark /> Eclantis Capital
         </Link>
         <nav className="hidden items-center gap-8 md:flex">
-          {NAV.map(([label, to]) => (
+          {nav.map(([label, to]) => (
             <NavLink
               key={to}
               to={to}
@@ -86,7 +89,7 @@ export function Header() {
       {open && (
         <div className="border-t border-line bg-cream px-6 py-4 md:hidden">
           <div className="flex flex-col gap-1">
-            {NAV.map(([label, to]) => (
+            {nav.map(([label, to]) => (
               <NavLink key={to} to={to} end={to === "/"} onClick={() => setOpen(false)}
                 className={({ isActive }) => `rounded-lg px-3 py-2.5 text-[15px] font-medium ${isActive ? "bg-chip text-green" : "text-ink"}`}>
                 {label}

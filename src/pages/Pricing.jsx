@@ -1,19 +1,10 @@
-import { Link } from "react-router-dom"
-import { HeroBand, CtaBand } from "../ui.jsx"
+import { HeroBand, CtaBand, BtnPrimary, Icon } from "../ui.jsx"
 
-const TIERS = [
-  {
-    name: "Starter", audience: "For solo founders and new small businesses", popular: false,
-    features: ["Monthly bookkeeping", "Annual UK tax return", "HMRC filing", "Email support"],
-  },
-  {
-    name: "Growth", audience: "For growing UK & UAE cross-border businesses", popular: true,
-    features: ["Everything in Starter", "UK & UAE tax returns", "Quarterly financial advisory review", "Payroll processing", "Priority phone & email support"],
-  },
-  {
-    name: "Scale", audience: "For established businesses with audit & UAE needs", popular: false,
-    features: ["Everything in Growth", "Statutory audit support", "UAE / cross-border structuring", "Dedicated advisor & monthly reviews", "HMRC enquiry representation"],
-  },
+const FACTORS = [
+  ["doc", "Services required", "Accounting, tax, payroll and advisory can be engaged together or separately."],
+  ["trend", "Business size & activity", "Transaction volume, turnover and number of employees shape the scope of work."],
+  ["globe", "Jurisdictions involved", "UK-only engagements are priced differently to UK–UAE cross-border work."],
+  ["calendar", "Frequency", "Monthly, quarterly or annual support — priced around how often you need us."],
 ]
 
 export default function Pricing() {
@@ -21,40 +12,53 @@ export default function Pricing() {
     <>
       <HeroBand
         eyebrow="Pricing"
-        title="Packages that scale with your business"
-        subtitle="Every business's cross-border complexity is different, so quotes are tailored after a short consultation — no surprise fees."
+        title="Fee-based pricing, tailored to your business"
+        subtitle="We don't sell fixed packages. Every engagement is priced individually after a short, free consultation — so you only pay for what your business actually needs."
       />
 
-      <section className="mx-auto max-w-[1200px] px-6 py-20 md:px-16">
-        <div className="grid gap-6 md:grid-cols-3">
-          {TIERS.map((t) => (
-            <div
-              key={t.name}
-              className={`relative flex flex-col rounded-[10px] p-9 ${t.popular ? "border-2 border-green bg-cream" : "border border-line bg-surface"}`}
-            >
-              {t.popular && (
-                <div className="absolute -top-3.5 left-9 rounded-full bg-gold px-3.5 py-1.5 text-[12px] font-bold text-ink">Most popular</div>
-              )}
-              <h3 className="mb-2 text-[20px] font-extrabold">{t.name}</h3>
-              <p className="mb-6 text-[14px] text-ink/65">{t.audience}</p>
-              <div className="mb-6 text-[15px] font-semibold text-green">Custom quote</div>
-              <ul className="mb-8 flex-1 list-disc pl-5 text-[14px] leading-8 text-ink/85">
-                {t.features.map((f) => <li key={f}>{f}</li>)}
-              </ul>
-              <Link
-                to="/contact"
-                className={`rounded px-6 py-3.5 text-center text-[14px] font-semibold transition ${
-                  t.popular ? "bg-green text-cream hover:bg-green-soft" : "border border-green text-green hover:bg-green hover:text-cream"
-                }`}
-              >
-                Get a quote
-              </Link>
-            </div>
-          ))}
+      <section className="mx-auto max-w-[880px] px-6 py-24 text-center md:px-16">
+        <p className="text-[18px] leading-[1.7] text-ink/75">
+          Eclantis Capital offers accounting, tax and advisory services — not off-the-shelf software packages. Because
+          every business's complexity, size and cross-border requirements are different, a single price list would
+          either overcharge simple businesses or undercharge complex ones.
+        </p>
+        <p className="mt-5 text-[18px] leading-[1.7] text-ink/75">
+          Instead, we agree a clear, fixed fee with you upfront — after we understand your business — so there are
+          never any surprise bills.
+        </p>
+      </section>
+
+      <section className="bg-surface px-6 py-24 md:px-16">
+        <div className="mx-auto max-w-[1100px]">
+          <h2 className="mb-12 text-center text-3xl font-black tracking-[-0.02em]">What shapes your quote</h2>
+          <div className="grid gap-x-10 gap-y-11 sm:grid-cols-2">
+            {FACTORS.map(([icon, title, desc]) => (
+              <div key={title} className="flex items-start gap-4">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-chip text-green">
+                  <Icon name={icon} size={20} />
+                </span>
+                <div>
+                  <h3 className="mb-1.5 text-[16px] font-extrabold">{title}</h3>
+                  <p className="text-[14.5px] leading-[1.6] text-ink/65">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <CtaBand title="Not sure which package fits?" subtitle="" button="Book a free consultation" />
+      <section className="mx-auto max-w-[720px] px-6 py-24 text-center md:px-16">
+        <h2 className="text-3xl font-black tracking-[-0.02em] md:text-4xl">Ready for a fixed-fee quote?</h2>
+        <p className="mt-4 text-[17px] leading-[1.65] text-ink/65">
+          Book a free, no-obligation consultation. We'll ask about your business, then send a clear, fixed-fee proposal
+          — no packages to choose between, just a price that fits.
+        </p>
+        <div className="mt-8 flex justify-center">
+          <BtnPrimary to="/contact">Book a Free Consultation</BtnPrimary>
+        </div>
+      </section>
+
+      <CtaBand title="Not sure where to start?" subtitle="" button="Book a free consultation" />
     </>
   )
 }

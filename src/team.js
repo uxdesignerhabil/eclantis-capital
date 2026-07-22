@@ -18,7 +18,7 @@ export const TEAM = [
     role: "Portfolio Manager",
     photo: "/Khokhar.jpeg",
     credentials: "ACCA Affiliate · BSc (Hons) Applied Accounting",
-    bio: "ACCA Affiliate with strong experience in UK financial reporting, management accounting, and tax compliance for multinational financial intermediary groups.",
+    bio: "ACCA Affiliate with expertise in financial and portfolio management, financial reporting, UK taxation, and strategic financial analysis for financial intermediary groups.",
     slug: "yashua-nadeem-khokhar",
     linkedin: "https://www.linkedin.com/in/yashua-nadeem-khokhar-857b85266",
   },
@@ -119,7 +119,7 @@ export const TEAM_PROFILES = {
       linkedinLabel: "LinkedIn profile",
     },
     summary:
-      "ACCA Affiliate with strong experience in financial reporting and management accounting. Currently Portfolio Manager at Vision Consulting, overseeing financial operations, budgeting, and tax compliance for a multinational financial intermediary group. Proficient in UK tax regulations and tools like Xero, QuickBooks, Sage, and CCH. Holds a BSc (Hons) in Applied Accounting from Oxford Brookes University, with expertise in forecasting, analysis, leadership, and delivering high-quality financial solutions.",
+      "An ACCA Affiliate and BSc (Hons) Applied Accounting graduate with extensive experience in financial management, portfolio management, asset management, financial reporting, taxation, and strategic financial analysis. With professional experience across public limited financial intermediary companies and internationally connected financial operations, he has developed expertise in building and managing financial portfolios, overseeing assets, and developing structured financial management services designed to support informed decision-making, regulatory compliance, operational efficiency, and sustainable financial performance. His expertise encompasses financial modelling, budgeting and forecasting, management accounting, financial reporting, UK taxation, regulatory reporting, and the development of financial solutions for complex business environments. He brings a combination of technical financial expertise, analytical insight, commercial awareness, and strategic thinking to the organisations and clients he serves.",
     experience: [
       {
         role: "Portfolio Manager",
